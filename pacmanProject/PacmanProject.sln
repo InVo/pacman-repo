@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PacmanProject", "PacmanProject\PacmanProject.vcxproj", "{0ACC4FF3-6575-40D1-A22F-4DD7B8774BE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0ACC4FF3-6575-40D1-A22F-4DD7B8774BE2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0ACC4FF3-6575-40D1-A22F-4DD7B8774BE2}.Debug|Win32.Build.0 = Debug|Win32
+		{0ACC4FF3-6575-40D1-A22F-4DD7B8774BE2}.Release|Win32.ActiveCfg = Release|Win32
+		{0ACC4FF3-6575-40D1-A22F-4DD7B8774BE2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
