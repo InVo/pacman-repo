@@ -113,6 +113,7 @@ private:
 	static void checkStars();
 	static void drawStars();
 	static void drawCube();
+	static void createGame();
 };
 
 #endif
