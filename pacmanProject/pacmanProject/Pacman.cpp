@@ -88,18 +88,21 @@ bool Pacman::init()
 int Pacman::start()
 {
 	init();
-	_game = new Game();
 	// Спрашивает пользователя, какой режим экрана он предпочитает
 	if( MessageBox( nullptr, _T("Хотите ли Вы запустить приложение в полноэкранном режиме?"),  
 						_T("Запустить в полноэкранном режиме?"), MB_YESNO | MB_ICONQUESTION) == IDNO )
 	{
 		_fullScreen = false;          // Оконный режим
 	} 
-
+	
+	// Создаем окно GL
 	if( !createGLWindow( _T("NeHe OpenGL окно"), 1024, 768, 32, _fullScreen ) )
 	{
 		return 0;           // Выйти, если окно не может быть создано
 	}
+
+	createGame();
+	_game = new Game();
 
 	MSG  msg;						// Структура для хранения сообщения Windows
 
@@ -246,6 +249,11 @@ void Pacman::checkBlend()
     }
 }
 
+void Pacman::createGame()
+{
+	_game = new Game();
+}
+
 bool Pacman::initGL()
 {
 /*	_image = loadImage("Data/Glass.bmp");
@@ -273,7 +281,7 @@ bool Pacman::initGL()
 	glEnable(GL_LIGHT1);
 
 	glColor4f(1.0f,1.0f,1.0f,0.5f);				// Полная яркость, 50% альфа
-	glBlendFunc(GL_SRC_ALPHA, GL_DST_ALPHA);	// Функция смешивания для непрозрачности,
+	glBlendFunc(GL_SRC_ALPHA, GL_DST_COLOR);	// Функция смешивания для непрозрачности,
 												// базирующаяся на значении альфы
 	glEnable(GL_BLEND);
 //	initStars();
@@ -551,6 +559,7 @@ bool Pacman::createGLWindow(LPCWSTR title, int width, int height, int bits, bool
 		return false;
 	}
 
+
 	if (_fullScreen) {
 		DEVMODE dmScreenSettings;													// Режим устройства
 		memset( &dmScreenSettings, 0, sizeof( dmScreenSettings ) );					// Очистка для хранения установок
@@ -630,6 +639,7 @@ bool Pacman::createGLWindow(LPCWSTR title, int width, int height, int bits, bool
 		MessageBox( NULL, _T("Can't Create A GL Device Context."), _T("ERROR"), MB_OK | MB_ICONEXCLAMATION );
 		return false;								// Вернуть false
 	}
+
 
 	if( !( pixelFormat = ChoosePixelFormat( _hDC, &pfd ) ) )        // Найден ли подходящий формат пикселя?
 	{

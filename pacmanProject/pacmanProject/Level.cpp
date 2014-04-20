@@ -13,7 +13,7 @@ Level::~Level()
 
 bool Level::init()
 {
-	_lineTexturePath = "Data/Glass.bmp";
+	_lineTexturePath = "Data/Glass.png";
 	_cornerTexturePath = "Data/line.jpg";
 	_tTypeTexturePath = "Data/line.jpg";
 	_crossTexturePath = "Data/line.jpg";
@@ -34,7 +34,7 @@ void Level::createLevelTexture(GLuint& texture, std::string& texturePath)
 
 void Level::draw()
 {
-	glTranslatef(0.f, 0.f, -20.f);
+	glTranslatef(0.f, 0.f, -6.f);
 	glBindTexture(GL_TEXTURE_2D, _lineTexture);
 	glBegin(GL_QUADS);
 		glNormal3f( 0.0f, 0.0f, 1.0f);     // Нормаль указывает на наблюдателя
