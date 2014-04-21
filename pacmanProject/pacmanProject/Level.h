@@ -25,5 +25,7 @@ private:
 	GLuint _cornerTexture;
 	GLuint _tTypeTexture;
 	GLuint _crossTexture;
+	// Vector of all blocks on the level map
+	std::vector<Object*> _levelBlocks;
 
 };

@@ -34,7 +34,7 @@ void Level::createLevelTexture(GLuint& texture, std::string& texturePath)
 
 void Level::draw()
 {
-	glTranslatef(0.f, 0.f, -6.f);
+//	glTranslatef(0.f, 0.f, -6.f);
 	glBindTexture(GL_TEXTURE_2D, _lineTexture);
 	glBegin(GL_QUADS);
 		glNormal3f( 0.0f, 0.0f, 1.0f);     // Нормаль указывает на наблюдателя
@@ -43,4 +43,5 @@ void Level::draw()
 		glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);  // Top Right Of The Texture and Quad
 		glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);  // Top Left Of The Texture and Quad		
 	glEnd();
+//	glTranslatef(0.f, 0.f, 6.f);
 }
