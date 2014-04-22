@@ -71,17 +71,17 @@ void Object::removeChild(Object* child)
 
 //Position
 
-float Object::getPositionX()
+float Object::getPositionX() const
 {
 	return _x;
 }
 
-float Object::getPositionY()
+float Object::getPositionY() const
 {
 	return _y;
 }
 
-float Object::getPositionZ()
+float Object::getPositionZ() const
 {
 	return _z;
 }
@@ -104,17 +104,17 @@ void Object::setPositionZ(float value)
 
 //Rotation
 
-float Object::getRotationX()
+float Object::getRotationX() const
 {
 	return _rotationX;
 }
 
-float Object::getRotationY()
+float Object::getRotationY() const
 {
 	return _rotationY;
 }
 
-float Object::getRotationZ()
+float Object::getRotationZ() const
 {
 	return _rotationZ;
 }

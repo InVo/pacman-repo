@@ -15,23 +15,23 @@ public:
 	virtual void removeChild(Object* child);
 	
 	//Position
-	virtual float getPositionX();
+	virtual float getPositionX() const;
 	virtual void setPositionX(float value);
 	
-	virtual float getPositionY();
+	virtual float getPositionY() const;
 	virtual void setPositionY(float value);
 
-	virtual float getPositionZ();
+	virtual float getPositionZ() const;
 	virtual void setPositionZ(float value);
 
 	//Rotation
-	virtual float getRotationX();
+	virtual float getRotationX() const;
 	virtual void setRotationX(float value);
 	
-	virtual float getRotationY();
+	virtual float getRotationY() const;
 	virtual void setRotationY(float value);
 
-	virtual float getRotationZ();
+	virtual float getRotationZ() const;
 	virtual void setRotationZ(float value);
 private:
 	std::vector<Object*> _children;
