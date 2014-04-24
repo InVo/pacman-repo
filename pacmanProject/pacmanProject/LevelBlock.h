@@ -35,6 +35,7 @@ public:
 	
 
 protected:
+	virtual void draw();
 	void setBlockType(LevelBlockType value);
 	void setOrientation(Orientation value);
 

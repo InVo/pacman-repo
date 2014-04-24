@@ -35,6 +35,20 @@ void LevelBlock::create(LevelBlockType blockType, Orientation orientation)
 		break;
 	}
 	_texture = SOIL_load_OGL_texture(textureFile.c_str(), SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y);
+	glBindTexture(GL_TEXTURE_2D, _texture);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+}
+
+void LevelBlock::draw()
+{
+	glBindTexture(GL_TEXTURE_2D, _texture);
+	glBegin(GL_QUADS);
+		glTexCoord2f(0.f, 0.f); glVertex2d(-1.f, -1.f);
+		glTexCoord2f(1.f, 0.f); glVertex2d(1.f, -1.f);
+		glTexCoord2f(1.f, 1.f); glVertex2d(1.f, 1.f);
+		glTexCoord2f(0.f, 1.f); glVertex2d(-1.f, 1.f);
+	glEnd();
 }
 
 void LevelBlock::setRotationZ(float value)

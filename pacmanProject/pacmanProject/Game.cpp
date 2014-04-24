@@ -1,10 +1,11 @@
 #include "Game.h"
 
+const float Game::LEVEL_Z_DEPTH = -50.f;
+
 Game::Game()
 {
 	_level = new Level();
-	_level->setPositionZ(-6.f);
-	_level->setRotationZ(30.f);
+	_level->setPositionZ(LEVEL_Z_DEPTH);
 	addChild(_level);
 }
 

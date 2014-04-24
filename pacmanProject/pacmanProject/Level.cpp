@@ -13,14 +13,9 @@ Level::~Level()
 
 bool Level::init()
 {
-	_lineTexturePath = "Data/Glass.png";
-	_cornerTexturePath = "Data/line.jpg";
-	_tTypeTexturePath = "Data/line.jpg";
-	_crossTexturePath = "Data/line.jpg";
-	createLevelTexture(_lineTexture, _lineTexturePath);
-	createLevelTexture(_cornerTexture, _cornerTexturePath);
-	createLevelTexture(_tTypeTexture, _tTypeTexturePath);
-	createLevelTexture(_crossTexture, _crossTexturePath);
+	LevelBlock* block = new LevelBlock();
+	block->create(LevelBlock::LEVEL_BLOCK_TYPE_LINEAR, LevelBlock::ORIENTATION_TOP);
+	addChild(block);
 	return true;
 }
 
@@ -34,12 +29,5 @@ void Level::createLevelTexture(GLuint& texture, std::string& texturePath)
 
 void Level::draw()
 {
-	glBindTexture(GL_TEXTURE_2D, _lineTexture);
-	glBegin(GL_QUADS);
-		glNormal3f( 0.0f, 0.0f, 1.0f);     // Нормаль указывает на наблюдателя
-		glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.0f, -1.0f,  1.0f);  // Bottom Left Of The Texture and Quad
-		glTexCoord2f(1.0f, 0.0f); glVertex3f( 1.0f, -1.0f,  1.0f);  // Bottom Right Of The Texture and Quad
-		glTexCoord2f(1.0f, 1.0f); glVertex3f( 1.0f,  1.0f,  1.0f);  // Top Right Of The Texture and Quad
-		glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.0f,  1.0f,  1.0f);  // Top Left Of The Texture and Quad		
-	glEnd();
+
 }

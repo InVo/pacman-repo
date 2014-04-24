@@ -9,6 +9,7 @@ are all childed to the object of this class
 class Game: public Object
 {
 public:
+	static const float LEVEL_Z_DEPTH;
 	Game();
 	~Game();
 	void render();

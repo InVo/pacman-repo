@@ -9,7 +9,9 @@ Object::Object():
 	_z(0.f),
 	_rotationX(0.f),
 	_rotationY(0.f),
-	_rotationZ(0.f)
+	_rotationZ(0.f),
+	_width(0.f),
+	_height(0.f)
 {
 
 }
@@ -132,4 +134,29 @@ void Object::setRotationY(float value)
 void Object::setRotationZ(float value)
 {
 	_rotationZ = value;
+}
+
+
+
+
+//Size
+
+float Object::getWidth() const
+{
+	return _width;
+}
+
+void Object::setWidth(float value)
+{
+	_width = value;
+}
+
+float Object::getHeight() const
+{
+	return _height;
+}
+
+void Object::setHeight(float value)
+{
+	_height = value;
 }

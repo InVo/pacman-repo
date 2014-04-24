@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <gl\GL.h>
 #include <gl\GLU.h>
+#include "LevelBlock.h"
 
 /* Level layer with walls
 */
@@ -26,6 +27,6 @@ private:
 	GLuint _tTypeTexture;
 	GLuint _crossTexture;
 	// Vector of all blocks on the level map
-	std::vector<Object*> _levelBlocks;
+	std::vector<LevelBlock*> _levelBlocks;
 
 };

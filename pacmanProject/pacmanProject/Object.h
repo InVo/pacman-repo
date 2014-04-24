@@ -33,6 +33,14 @@ public:
 
 	virtual float getRotationZ() const;
 	virtual void setRotationZ(float value);
+
+	//Size
+	virtual float getWidth() const;
+	virtual void setWidth(float value);
+
+	virtual float getHeight() const;
+	virtual void setHeight(float value);
+
 private:
 	std::vector<Object*> _children;
 	float _x;
@@ -42,4 +50,7 @@ private:
 	float _rotationX;
 	float _rotationY;
 	float _rotationZ;
+
+	float _width;
+	float _height;
 };
