@@ -33,6 +33,11 @@ public:
 	LevelBlockType getBlockType() const;
 	Orientation getOrientation() const;
 	
+	int getCoordinateX() const;
+	void setCoordinateX(int coordX);
+
+	int getCoordinateY() const;
+	void setCoordinateY(int coordY);
 
 protected:
 	virtual void draw();
@@ -45,4 +50,8 @@ private:
 	LevelBlockType _blockType;
 	Orientation _orientation;
 	GLuint _texture;
+
+	//Game coordinates for this block
+	int _coordinateX;
+	int _coordinateY;
 };
