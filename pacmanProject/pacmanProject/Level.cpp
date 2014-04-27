@@ -1,7 +1,9 @@
 #include "Level.h"
 #include "SOIL.h"
 
-Level::Level()
+Level::Level():
+	_blockXStep(0),
+	_blockYStep(0)
 {
 	init();
 }
@@ -16,6 +18,11 @@ bool Level::init()
 	LevelBlock* block = new LevelBlock();
 	block->create(LevelBlock::LEVEL_BLOCK_TYPE_LINEAR, LevelBlock::ORIENTATION_TOP);
 	addChild(block);
+	LevelBlock* block2 = new LevelBlock();
+	block2->create(LevelBlock::LEVEL_BLOCK_TYPE_LINEAR, LevelBlock::ORIENTATION_LEFT);
+	block2->setPositionX(block->getPositionX() + block->getWidth());
+	block2->setPositionY(block->getPositionY());
+	addChild(block2);
 	return true;
 }
 

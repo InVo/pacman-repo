@@ -18,14 +18,8 @@ public:
 protected:
 	void createLevelTexture(GLuint& texture, std::string& texturePath);
 private:
-	std::string _lineTexturePath; // Line type wall texture
-	std::string _cornerTexturePath; // corner type wall texture
-	std::string _tTypeTexturePath; // T-type wall texture
-	std::string _crossTexturePath; // cross type wall texture
-	GLuint _lineTexture;
-	GLuint _cornerTexture;
-	GLuint _tTypeTexture;
-	GLuint _crossTexture;
+	float _blockXStep;
+	float _blockYStep;
 	// Vector of all blocks on the level map
 	std::vector<LevelBlock*> _levelBlocks;
 
