@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <windows.h>
+#include <gl/GL.h>
 
 /* Base class for all drawable objects
 */
@@ -36,12 +38,12 @@ public:
 
 	//Size
 	virtual float getWidth() const;
-	virtual void setWidth(float value);
+	virtual void setWidth(GLfloat value);
 
 	virtual float getHeight() const;
-	virtual void setHeight(float value);
+	virtual void setHeight(GLfloat value);
 
-private:
+protected:
 	std::vector<Object*> _children;
 	float _x;
 	float _y;
@@ -51,6 +53,6 @@ private:
 	float _rotationY;
 	float _rotationZ;
 
-	float _width;
-	float _height;
+	GLfloat _width;
+	GLfloat _height;
 };

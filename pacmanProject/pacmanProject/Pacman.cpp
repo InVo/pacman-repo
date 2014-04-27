@@ -4,7 +4,7 @@
 #include <cassert>
 
 const unsigned int Pacman::NUMBER_OF_KEYS = 256;
-const GLfloat Pacman::PERSPECTIVE_CLOSE = 0.1f;
+const GLfloat Pacman::PERSPECTIVE_CLOSE = 0.0f;
 const GLfloat Pacman::PERSPECTIVE_FAR = 100.0f;
 const GLfloat Pacman::PERSPECTIVE_FOV = 60.f;
 
@@ -256,34 +256,26 @@ void Pacman::createGame()
 
 bool Pacman::initGL()
 {
-/*	_image = loadImage("Data/Glass.bmp");
-	if (!_image) {
-		return false;
-	}
-
-	if (!createGLTexturesFromImage(_image)) {
-		return false;
-	}*/
-
 	glEnable(GL_TEXTURE_2D);                        // Enable Texture Mapping
 	glShadeModel( GL_SMOOTH );						// Разрешить плавное цветовое сглаживание
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);           // Очистка экрана в черный цвет
+	glClearColor(0.f, 0.f, 0.f, 0.f);           // Очистка экрана в черный цвет
     glClearDepth( 1.0f );							// Разрешить очистку буфера глубины
-//  glEnable( GL_DEPTH_TEST );					// Разрешить тест глубины
+//  glEnable( GL_DEPTH_TEST );						// Разрешить тест глубины
 //  glDepthFunc( GL_LEQUAL );						// Тип теста глубины
 
-	glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );      // Улучшение в вычислении перспективы
+//	glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );      // Улучшение в вычислении перспективы
 
 	glLightfv(GL_LIGHT1, GL_AMBIENT, _lightAmbient);		// Установить фоновый свет
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, _lightDiffuse);		// Установить диффузный свет
 	glLightfv(GL_LIGHT1, GL_POSITION, _lightPosition);		// Положение источника света
 
-	glEnable(GL_LIGHT1);
+	glEnable(GL_LIGHT1); 
 
 	glColor4f(1.0f,1.0f,1.0f,0.5f);				// Полная яркость, 50% альфа
 	glBlendFunc(GL_SRC_ALPHA, GL_DST_COLOR);	// Функция смешивания для непрозрачности,
 												// базирующаяся на значении альфы
-	glEnable(GL_BLEND);
+
+//	glEnable(GL_BLEND);
 //	initStars();
 	return true;                // Инициализация прошла успешно
 }
@@ -301,26 +293,12 @@ void Pacman::initStars()
 
 bool Pacman::drawGLScene()
 {
-    glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );      // Очистить экран и буфер глубины
+    glClear( GL_COLOR_BUFFER_BIT );// | GL_DEPTH_BUFFER_BIT );      // Очистить экран и буфер глубины
     glLoadIdentity();              // Сбросить текущую матрицу
-
+	glColor3f(255.f, 255.f, 255.f);
 	// PLACE DRAW CODE HERE
-
-/*	glTranslatef(0.f,0.f, _z);
-	glRotatef(_xrot,1.0f,0.0f,0.0f);                     // Rotate On The X Axis
-	glRotatef(_yrot,0.0f,1.0f,0.0f);                     // Rotate On The Y Axis
-	glRotatef(_zrot,0.0f,0.0f,1.0f);                     // Rotate On The Z Axis
-*/
-	
-//	glBindTexture(GL_TEXTURE_2D, _texture[_filter]);               // Select Our Texture
-
-//	drawStars();
-
-//    _xrot+=_xspeed;                             // X Axis Rotation
-//    _yrot+=_yspeed;                             // Y Axis Rotation
-//	drawCube();
 	_game->render();
-
+	
     return true;                // Прорисовка прошла успешно
 }
 
@@ -693,13 +671,14 @@ GLvoid Pacman::resizeGLScene( GLsizei width, GLsizei height)
         height = 1;
     }
     
-    glViewport( 0, 0, width, height );          // Сброс текущей области вывода
+//    glViewport( 0, 0, width, height );          // Сброс текущей области вывода
 
     glMatrixMode( GL_PROJECTION );            // Выбор матрицы проекций
     glLoadIdentity();              // Сброс матрицы проекции
- 
+	
+	glOrtho (0, width, height, 0, 1, -1);
     // Вычисление соотношения геометрических размеров для окна
-    gluPerspective( PERSPECTIVE_FOV, (GLfloat)width/(GLfloat)height, PERSPECTIVE_CLOSE, PERSPECTIVE_FAR );
+//    gluPerspective( PERSPECTIVE_FOV, (GLfloat)width/(GLfloat)height, PERSPECTIVE_CLOSE, PERSPECTIVE_FAR );
  
     glMatrixMode( GL_MODELVIEW );            // Выбор матрицы вида модели
     glLoadIdentity();              // Сброс матрицы вида модели

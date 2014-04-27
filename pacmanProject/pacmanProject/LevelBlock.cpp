@@ -38,16 +38,18 @@ void LevelBlock::create(LevelBlockType blockType, Orientation orientation)
 	glBindTexture(GL_TEXTURE_2D, _texture);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glGetTexLevelParameterfv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &_width);
+	glGetTexLevelParameterfv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &_height);
 }
 
 void LevelBlock::draw()
 {
 	glBindTexture(GL_TEXTURE_2D, _texture);
 	glBegin(GL_QUADS);
-		glTexCoord2f(0.f, 0.f); glVertex2d(-1.f, -1.f);
-		glTexCoord2f(1.f, 0.f); glVertex2d(1.f, -1.f);
-		glTexCoord2f(1.f, 1.f); glVertex2d(1.f, 1.f);
-		glTexCoord2f(0.f, 1.f); glVertex2d(-1.f, 1.f);
+		glTexCoord2f(0.f, 0.f); glVertex2d(-_width / 2, - _height / 2);
+		glTexCoord2f(1.f, 0.f); glVertex2d(_width / 2, - _height / 2);
+		glTexCoord2f(1.f, 1.f); glVertex2d(_width / 2, _height / 2);
+		glTexCoord2f(0.f, 1.f); glVertex2d(-_width / 2, _height / 2);
 	glEnd();
 }
 
