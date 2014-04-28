@@ -4,7 +4,8 @@
 #include <windows.h>
 #include <gl/GL.h>
 
-/* Base class for all drawable objects
+/**
+	Base class for all drawable objects
 */
 class Object
 {

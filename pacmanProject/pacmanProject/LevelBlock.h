@@ -1,9 +1,11 @@
-#include "Object.h"
+#include "LevelObject.h"
 
 #include <windows.h>
 #include <gl/GL.h>
-
-class LevelBlock: public Object
+/**
+	Class of walls on the game level
+*/
+class LevelBlock: public LevelObject
 {
 public:
 
@@ -32,12 +34,6 @@ public:
 
 	LevelBlockType getBlockType() const;
 	Orientation getOrientation() const;
-	
-	int getCoordinateX() const;
-	void setCoordinateX(int coordX);
-
-	int getCoordinateY() const;
-	void setCoordinateY(int coordY);
 
 protected:
 	virtual void draw();
@@ -50,8 +46,4 @@ private:
 	LevelBlockType _blockType;
 	Orientation _orientation;
 	GLuint _texture;
-
-	//Game coordinates for this block
-	int _coordinateX;
-	int _coordinateY;
 };

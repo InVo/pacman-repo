@@ -1,6 +1,15 @@
 #include "Level.h"
 #include "SOIL.h"
 
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+const unsigned int Level::LEVEL_WIDTH = 20;
+const unsigned int Level::LEVEL_HEIGHT = 20;
+
 Level::Level():
 	_blockXStep(0),
 	_blockYStep(0)
@@ -15,6 +24,7 @@ Level::~Level()
 
 bool Level::init()
 {
+	loadLevelData();
 	LevelBlock* block = new LevelBlock();
 	block->create(LevelBlock::LEVEL_BLOCK_TYPE_LINEAR, LevelBlock::ORIENTATION_TOP);
 	addChild(block);
@@ -37,4 +47,29 @@ void Level::createLevelTexture(GLuint& texture, std::string& texturePath)
 void Level::draw()
 {
 
+}
+
+void Level::loadLevelData()
+{
+	_levelBlocks = vector<vector<LevelBlock*>>(LEVEL_HEIGHT);
+
+	string fileName = "Data/data.txt";
+	ifstream file;
+	file.open(fileName);
+	string line;
+	unsigned int lineNumber = 0;
+	if (file.is_open()) {
+		while(getline(file, line)) {
+			for(unsigned int i = 0, iMax = line.length(); i < iMax; i++) {
+				char c = line[i];
+				switch(c) {
+					case '*':
+						break;
+					default:
+						break;
+				}
+			}
+		}
+	}
+	file.close();
 }

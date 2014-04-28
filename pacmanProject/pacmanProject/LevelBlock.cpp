@@ -91,24 +91,3 @@ void LevelBlock::setOrientation(LevelBlock::Orientation value)
 		break;
 	}
 }
-
-
-int LevelBlock::getCoordinateX() const 
-{
-	return _coordinateX;
-}
-
-void LevelBlock::setCoordinateX(int value)
-{
-	_coordinateX = value;
-}
-
-int LevelBlock::getCoordinateY() const 
-{
-	return _coordinateY;
-}
-
-void LevelBlock::setCoordinateY(int value)
-{
-	_coordinateY = value;
-}
