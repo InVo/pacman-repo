@@ -102,7 +102,6 @@ int Pacman::start()
 	}
 
 	createGame();
-	_game = new Game();
 
 	MSG  msg;						// Структура для хранения сообщения Windows
 

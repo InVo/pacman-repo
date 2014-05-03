@@ -3,14 +3,17 @@
 
 using namespace std;
 
+const string LevelBlock::FILE_LEVEL_BLOCK_SQUARE = "Data/square.png";
+const string LevelBlock::FILE_LEVEL_BLOCK_DEAD_END = "Data/dead_end.png";
 const string LevelBlock::FILE_LEVEL_BLOCK_LINEAR = "Data/line.png";
 const string LevelBlock::FILE_LEVEL_BLOCK_T_TYPE = "Data/t_type.png";
 const string LevelBlock::FILE_LEVEL_BLOCK_CORNER = "Data/corner.png";
 const string LevelBlock::FILE_LEVEL_BLOCK_CROSS = "Data/cross.png";
 
-LevelBlock::LevelBlock()
+LevelBlock::LevelBlock():
+LevelObject()
 {
-
+	_objectType = LEVEL_OBJECT_BLOCK;
 }
 
 void LevelBlock::create(LevelBlockType blockType, Orientation orientation)
@@ -19,6 +22,12 @@ void LevelBlock::create(LevelBlockType blockType, Orientation orientation)
 	setBlockType(blockType);
 	std::string textureFile;
 	switch(blockType) {
+	case LEVEL_BLOCK_TYPE_SQUARE:
+		textureFile = FILE_LEVEL_BLOCK_SQUARE;
+		break;
+	case LEVEL_BLOCK_TYPE_DEAD_END:
+		textureFile = FILE_LEVEL_BLOCK_DEAD_END;
+		break;
 	case LEVEL_BLOCK_TYPE_LINEAR:
 		textureFile = FILE_LEVEL_BLOCK_LINEAR;
 		break;

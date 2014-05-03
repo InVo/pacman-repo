@@ -1,6 +1,8 @@
 #include "LevelObject.h"
 
-LevelObject::LevelObject()
+LevelObject::LevelObject():
+	_coordinateX(0),
+	_coordinateY(0)
 {
 
 }
@@ -28,4 +30,14 @@ int LevelObject::getCoordinateY() const
 void LevelObject::setCoordinateY(int value)
 {
 	_coordinateY = value;
+}
+
+LevelObject::LevelObjectType LevelObject::getObjectType()
+{
+	return _objectType;
+}
+
+void LevelObject::render()
+{
+	Object::render();
 }

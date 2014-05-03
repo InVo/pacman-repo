@@ -7,6 +7,11 @@
 class LevelObject: public Object
 {
 public:
+	enum LevelObjectType {
+		LEVEL_OBJECT_NONE,
+		LEVEL_OBJECT_BLOCK
+	};
+
 	LevelObject();
 	~LevelObject();
 
@@ -16,8 +21,11 @@ public:
 	int getCoordinateY() const;
 	void setCoordinateY(int coordY);
 
-private:
+	virtual void render();
+	LevelObjectType getObjectType();
+protected:
 	//Game coordinates for this object
 	int _coordinateX;
 	int _coordinateY;
+	LevelObjectType _objectType;
 };

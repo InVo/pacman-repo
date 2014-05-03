@@ -9,12 +9,16 @@ class LevelBlock: public LevelObject
 {
 public:
 
+	static const std::string FILE_LEVEL_BLOCK_SQUARE;
+	static const std::string FILE_LEVEL_BLOCK_DEAD_END;
 	static const std::string FILE_LEVEL_BLOCK_LINEAR;
 	static const std::string FILE_LEVEL_BLOCK_T_TYPE;
 	static const std::string FILE_LEVEL_BLOCK_CORNER;
 	static const std::string FILE_LEVEL_BLOCK_CROSS;
 
 	enum LevelBlockType {
+		LEVEL_BLOCK_TYPE_SQUARE,
+		LEVEL_BLOCK_TYPE_DEAD_END,
 		LEVEL_BLOCK_TYPE_LINEAR,
 		LEVEL_BLOCK_TYPE_T_TYPE,
 		LEVEL_BLOCK_TYPE_CORNER,
