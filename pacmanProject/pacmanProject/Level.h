@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <gl\GL.h>
 #include <gl\GLU.h>
-#include "LevelBlock.h"
+#include "LevelObject.h"
 
 /* Level layer with walls
 */
@@ -18,13 +18,15 @@ public:
 	static const float LEVEL_START_X;
 	static const float LEVEL_START_Y;
 
+	static const float LEVEL_STEP_X;
+	static const float LEVEL_STEP_Y;
+
 	Level();
 	~Level();
 	bool init();
 	virtual void draw();
 	void createBlock(LevelObject* levelObject, int row, int column);
 protected:
-	void createLevelTexture(GLuint& texture, std::string& texturePath);
 	void loadLevelData();
 	void initLevelObjects();
 private:

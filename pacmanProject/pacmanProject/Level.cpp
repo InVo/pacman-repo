@@ -6,6 +6,8 @@
 #include <string>
 
 #include "Utils.h"
+#include "LevelBlock.h"
+#include "LevelDot.h"
 
 using namespace std;
 
@@ -14,6 +16,9 @@ const unsigned int Level::LEVEL_HEIGHT = 20;
 
 const float Level::LEVEL_START_X = 0.f;
 const float Level::LEVEL_START_Y = 200.f;
+
+const float Level::LEVEL_STEP_X = 32.f;
+const float Level::LEVEL_STEP_Y = 32.f;
 
 Level::Level():
 	_blockXStep(0),
@@ -36,14 +41,6 @@ bool Level::init()
 	return true;
 }
 
-void Level::createLevelTexture(GLuint& texture, std::string& texturePath)
-{
-	texture = SOIL_load_OGL_texture(texturePath.c_str(),SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_INVERT_Y);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-}
-
 void Level::initLevelObjects()
 {
 	for(unsigned int i = 0, iMax = _levelObjects.size(); i < iMax; ++i) {
@@ -55,10 +52,10 @@ void Level::initLevelObjects()
 				levelObject->setCoordinateY(i);
 				if (LevelObject::LEVEL_OBJECT_BLOCK == levelObject->getObjectType()) {
 					createBlock(levelObject, i, j);
-					addChild(levelObject);
-					levelObject->setPositionY(_startPositionY + i * levelObject->getHeight());
-					levelObject->setPositionX(_startPositionX + j * levelObject->getWidth());
 				}
+				addChild(levelObject);
+				levelObject->setPositionY(_startPositionY + i * LEVEL_STEP_Y);
+				levelObject->setPositionX(_startPositionX + j * LEVEL_STEP_X);
 			}
 		}
 	}
@@ -157,15 +154,6 @@ void Level::createBlock(LevelObject* levelObject, int row, int column)
 		else if (haveBottom) orientation = LevelBlock::ORIENTATION_TOP;
 	}
 
-	// DEAD END
-	if (1 == numberOfNeighbours && haveTop) {
-		blockType = LevelBlock::LEVEL_BLOCK_TYPE_CROSS;
-		if (haveLeft) orientation = LevelBlock::ORIENTATION_RIGHT;
-		else if (haveRight) orientation = LevelBlock::ORIENTATION_LEFT;
-		else if (haveTop) orientation = LevelBlock::ORIENTATION_BOTTOM;
-		else if (haveBottom) orientation = LevelBlock::ORIENTATION_TOP;
-	}
-
 	// LINE
 	if (2 == numberOfNeighbours && numOfVert != numOfHor) {
 		blockType = LevelBlock::LEVEL_BLOCK_TYPE_LINEAR;
@@ -225,6 +213,9 @@ void Level::loadLevelData()
 				switch(c) {
 					case '*':
 						blockRow.push_back(new LevelBlock());
+						break;
+					case '.':
+						blockRow.push_back(new LevelDot());
 						break;
 					default:
 						blockRow.push_back(nullptr);

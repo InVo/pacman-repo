@@ -50,4 +50,10 @@ private:
 	LevelBlockType _blockType;
 	Orientation _orientation;
 	GLuint _texture;
+	static GLuint _textureSquare;
+	static GLuint _textureDeadEnd;
+	static GLuint _textureLinear;
+	static GLuint _textureTType;
+	static GLuint _textureCorner;
+	static GLuint _textureCross;
 };
